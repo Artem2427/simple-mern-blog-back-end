@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import fs from "fs";
 import mongoose from "mongoose";
 import multer from "multer";
 import cors from "cors";
@@ -17,6 +18,9 @@ dotenv.config();
 const storage = multer.diskStorage({
   // возвращаем путь
   destination: (_, __, cb) => {
+    if (!fs.existsSync("uploads")) {
+      fs.mkdirSync("uploads");
+    }
     cb(null, "uploads");
   },
 
