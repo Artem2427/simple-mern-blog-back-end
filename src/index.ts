@@ -47,11 +47,12 @@ app.post(
   }
 );
 const PORT = process.env.PORT || 4444;
+const URL = process.env.MONGODB_URL || "mongodb://localhost:27017/blog-express";
 
 async function start() {
   try {
     await mongoose.connect(
-      "mongodb://localhost:27017/blog-express"
+      URL
       // {
       //   useNewUrlParser: true,
       //   useUnifiedTopology: true,
